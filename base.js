@@ -16,7 +16,7 @@ export default class Base{
     }
 
     showInfo(){
-        return `${this._name} (en ${this._min}minutos).`;
+        return `${this._name} (en ${this._min} minutos).`;
     }
 
     setPrev(base){

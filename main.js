@@ -28,9 +28,22 @@ class App{
             this._setMessage("Esta base ya fue agregada.");
             return;
         }
-        console.log(this._route._start);
-        console.log(this._route._start.prev);
         this._setMessage("Agregado " + base.showInfo());
+    }
+
+    _deleteBase = () => {
+        let name = this._readName();
+        if(!name){
+            this._setMessage("Ingresa un nombre.");
+            return;
+        }
+        let result = this._route.deleteBase(name);
+        if(!result){
+            this._setMessage(result);
+            return;
+        }
+
+        this._setMessage("Eliminado " + result.showInfo());
     }
 
     _setMessage(message){
@@ -38,6 +51,13 @@ class App{
         let action = document.createElement("p");
         action.innerHTML = `<p>${message}</p>`;
         this._console.appendChild(action);
+    }
+
+    _readName(){
+        let inpName = document.getElementById("name");
+        let name = inpName.value;
+        inpName.value = "";
+        return name;
     }
 
     _readForm(){
