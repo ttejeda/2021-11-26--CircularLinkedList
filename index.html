@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruta de camión</title>
+</head>
+<body>
+    <div id="info">
+        <h1>Registro de ruta del camión "Lase"</h1>
+        <p>Este sistema registra, elimina, lista las bases de la ruta, además de crear una tarjeta sobre la base de inicio, hora de 
+            salida y los minutos que tarda en dar la vuelta.</p>
+    </div>
+    <div id="form">
+        <form>
+            <h2>Manipulación de rutas</h2>
+            <div id="field">
+                <label for="name">
+                    <b>Nombre de la base:</b><br>
+                    <input id="name" type="text" placeholder="Centro">
+                </label>
+            </div> <br>
+            <div id="field">
+                <label for="time">
+                    <b>Tiempo que tarda (en minutos):</b><br>
+                    <input id="time" type="number">
+                </label>
+            </div> <br>
+            <div id="field">
+                <button type="button" id="btnAdd">Agregar</button>
+                <button type="button" id="btnDelete">Eliminar</button>
+                <button type="button" id="btnList">Listar</button>
+                <button type="button" id="btnCard">Crear tarjeta</button>
+            </div>
+        </form>
+    </div>
+    <div id="result">
+        <h2>Resultados:</h2>
+    </div>
+</body>
+<script src="main.js" type="module"></script>
+</html>
