@@ -58,6 +58,29 @@ class App{
         this._console.appendChild(action);
     }
 
+    _createCard = () => {
+        let inpBase = document.getElementById("start");
+        let inpTStart = document.getElementById("timeStart");
+        let inpTime = document.getElementById("totalTime");
+
+        let base = inpBase.value;
+        let timeStart = Number(inpTStart.value);
+        let totalTime = Number(inpTime.value);
+
+        if(!base || !timeStart || !totalTime){
+            this._setMessage("Llena todo los campos.");
+            return;
+        }
+        if(timeStart > 23 || timeStart < 0){
+            this._setMessage("Introduce una hora correcta (entre 0 y 23 horas).");
+            return; 
+        }
+
+        let message = `Ruta ${base}<br>Inicia a las ${timeStart}.<br>Dura ${totalTime} minutos.<br>`;
+        let routeComplete = this._route.createCard(base, timeStart, totalTime, message);
+        this._setMessage(routeComplete);
+    }
+
     _readName(){
         let inpName = document.getElementById("name");
         let name = inpName.value;

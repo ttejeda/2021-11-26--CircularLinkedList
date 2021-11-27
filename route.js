@@ -73,18 +73,41 @@ export default class List{
         return result;
     }
 
+    createCard(name, timeStart, time, message){
+        let exist = this._search(name);
+        if(!exist || !this._start){
+            return "No existe esa base.";
+        }
+        exist = exist.next;
+
+        let min = exist.getMin();
+        let msg = "";
+        do{
+            if(min >= 60){
+                timeStart++;
+                min -= 60;
+            }
+            msg += `${exist.getName()}: ${timeStart}:${min}.<br>`;
+            exist = exist.next;
+            time -= exist.getMin();
+            min += exist.getMin();
+        } while(exist.getMin() <= time);
+
+        return message += msg;
+    }
+
     _search(name){
         if(this._start == null){
-            return false;
+            return null;
         }
         
         let temp = this._start;
         do{
             if(temp.getName() == name){
-                return true;
+                return temp;
             }
             temp = temp.next;
         } while (temp != this._start);
-        return false;
+        return null;
     }
 }
