@@ -46,6 +46,11 @@ class App{
         this._setMessage("Eliminado " + result.showInfo());
     }
 
+    _listBases = () => {
+        let result = this._route.listBases();
+        this._setMessage(result);
+    }
+
     _setMessage(message){
         this._console = document.getElementById("result");
         let action = document.createElement("p");

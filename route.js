@@ -30,7 +30,7 @@ export default class List{
         if(!exist){
             return null;
         }
-
+        
         let temp = this._start;
         if(this._start.getName() == name){
             if(this._start.next == this._start){
@@ -57,22 +57,34 @@ export default class List{
         return temp;
     }
 
+    listBases(){
+        if(!this._start){
+            return "No se ha registrado ninguna base.";
+        }
+
+        let temp = this._start;
+        let result = "";
+        let n = 1;
+        do{
+            result += ` <b>${n}</b>. ${temp.showInfo()}`;
+            temp = temp.next;
+            n++;
+        } while(temp != this._start);
+        return result;
+    }
+
     _search(name){
         if(this._start == null){
             return false;
         }
         
-        if(this._start.getName() == name){
-            return true;
-        }
-
-        let temp = this._start.next;
-        while(temp != this._start){
+        let temp = this._start;
+        do{
             if(temp.getName() == name){
                 return true;
             }
             temp = temp.next;
-        }
+        } while (temp != this._start);
         return false;
     }
 }
